@@ -19,7 +19,7 @@ namespace l2l.Data.Model
             var cBuilder = new ConfigurationBuilder()
                                 .SetBasePath(basePath)
                                 .AddJsonFile("appsettings.json")
-                                .AddJsonFile($"appsettings.{environment}.json")
+                                .AddJsonFile($"appsettings.{environment}.json", true) //true in case of no variables
                                 .AddEnvironmentVariables();
 
             var config = cBuilder.Build();
