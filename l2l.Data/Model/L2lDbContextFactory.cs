@@ -14,7 +14,7 @@ namespace l2l.Data.Model
 
             var basePath = Directory.GetCurrentDirectory();
 
-            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            var environment = Environment.GetEnvironmentVariable(GlobalStrings.ASPNETCORE_ENVIRONMENT);
 
             var cBuilder = new ConfigurationBuilder()
                                 .SetBasePath(basePath)
@@ -24,7 +24,7 @@ namespace l2l.Data.Model
 
             var config = cBuilder.Build();
 
-            var cn = config.GetConnectionString("DefaultConnection"); //from appsettings
+            var cn = config.GetConnectionString(GlobalStrings.CONNECTION_NAME); //from appsettings
 
             oBuilder.UseSqlite(cn);
 
