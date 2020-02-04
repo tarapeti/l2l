@@ -22,8 +22,11 @@ namespace l2l.Data.Model
                                 .AddJsonFile($"appsettings.{environment}.json")
                                 .AddEnvironmentVariables();
 
+            var config = cBuilder.Build();
 
-            oBuilder.UseSqlite("Data Source=l2l.db;");
+            var cn = config.GetConnectionString("DefaultConnection"); //from appsettings
+
+            oBuilder.UseSqlite(cn);
 
             return new L2lDbContext(oBuilder.Options);
         }
