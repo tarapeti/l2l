@@ -14,4 +14,9 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.1"/>
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="3.1.1"/>
   </ItemGroup>
+    <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutPutDirectory>Always</CopyToOutPutDirectory>
+    </None>
+  </ItemGroup>
 </Project>
