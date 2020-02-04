@@ -2,12 +2,12 @@ using System;
 
 namespace l2l.Data.Model
 {
-    public class Course : IEquatable<Course>
+    public class Course //: IEquatable<Course>
     {
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public override bool Equals(object obj)
+        /*public override bool Equals(object obj)
         {
             return Equals(obj as Course);
 
@@ -34,6 +34,6 @@ namespace l2l.Data.Model
                 return hash;
 
             }
-        }
+        }*/
     }
 }
