@@ -23,5 +23,17 @@ namespace l2l.Data.Model
             }
             return true;
         }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hash = 27;
+                hash = (13 * hash) + Id.GetHashCode();
+                hash = (13 * hash) + Name.GetHashCode();
+                return hash;
+
+            }
+        }
     }
 }
