@@ -21,6 +21,7 @@ namespace l2l.Data.Tests
             var result = sut.GetById(course.Id);
 
             Assert.NotNull(result);
+            Assert.Equal(course, result);
 
         }
     }
