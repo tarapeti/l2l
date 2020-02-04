@@ -67,6 +67,24 @@ namespace l2l.Data.Tests
 
         }
 
+        /// <summary>
+        /// Update test
+        /// </summary>
+        [Fact]
+        public void CourseRepository_Delete()
+        {
+            var sut = new CourseRepository();
+            var course = new Course{Id = 1, Name="Test course"};
+            sut.Add(course);
+
+            var toDelete = sut.GetById(course.Id);
+            sut.Delete(toDelete);
+
+            var afterDelete = sut.GetById(course.Id);
+
+            afterDelete.Should().BeNull();
+        }
+
 
     }
 }

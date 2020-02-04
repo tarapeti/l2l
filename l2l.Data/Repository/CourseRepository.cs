@@ -23,9 +23,14 @@ namespace l2l.Data.Repository
             return db.Courses.Find(Id);
         }
 
-        public void Update(Course entity)
+        public void Update(Course toUpdate)
         {
-            db.Courses.Update(entity);
+            db.Courses.Update(toUpdate);
+        }
+
+        public void Delete(Course toDelete)
+        {
+            db.Courses.Remove(toDelete);
         }
     }
 }
