@@ -7,12 +7,12 @@ namespace l2l.Data.Repository
     {
         public void Add(Course course)
         {
-            
+
         }
 
         public Course GetById(int id)
         {
-            return new Course();
+            return new Course{Id = 1, Name="Test course"};
         }
     }
 }
