@@ -2,7 +2,7 @@ using System;
 using l2l.Data.Model;
 using Xunit;
 using l2l.Data.Repository;
-
+using FluentAssertions;
 
 namespace l2l.Data.Tests
 {
@@ -21,7 +21,9 @@ namespace l2l.Data.Tests
             var result = sut.GetById(course.Id);
 
             Assert.NotNull(result);
-            Assert.Equal(course, result);
+            //Assert.Equal(course, result); -> antipattern
+
+            result.Should().BeEquivalentTo(course);
 
         }
     }
