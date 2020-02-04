@@ -11,6 +11,15 @@ namespace l2l.Data.Tests
     /// </summary>
     public class CourseRepositoryTests
     {
+
+        public CourseRepositoryTests()
+        {
+            var factory = new L2lDbContextFactory();
+            var db = factory.CreateDbContext(new string[] {});
+            db.Database.EnsureCreated();
+        }
+
+
         [Fact]
         public void CourseRepositoryTests_CreateCourseShouldBeInRepository()
         {
