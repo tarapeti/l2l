@@ -9,8 +9,15 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0"/>
     <PackageReference Include="coverlet.collector" Version="1.0.1"/>
     <PackageReference Include="FluentAssertions" Version="5.10.0"/>
+
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\l2l.Data\l2l.Data.csproj"/>
   </ItemGroup>
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutPutDirectory>Always</CopyToOutPutDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
