@@ -9,14 +9,13 @@ namespace l2l.Data.Tests
     /// <summary>
     /// CRUD and list tests
     /// </summary>
-    public class CourseRepositoryTests
+    public class CourseRepositoryTests : IClassFixture<DatabaseFixture>
     {
+        private readonly DatabaseFixture fixture;
 
-        public CourseRepositoryTests()
+        public CourseRepositoryTests(DatabaseFixture fixture)
         {
-            var factory = new L2lDbContextFactory();
-            var db = factory.CreateDbContext(new string[] {});
-            db.Database.EnsureCreated();
+            this.fixture = fixture ?? throw new ArgumentNullException(nameof(fixture)); //dependency injection
         }
 
 
