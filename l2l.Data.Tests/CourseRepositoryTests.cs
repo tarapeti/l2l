@@ -22,7 +22,7 @@ namespace l2l.Data.Tests
         [Fact]
         public void CourseRepositoryTests_CreateCourseShouldBeInRepository()
         {
-            var sut = new CourseRepository();
+            var sut = new CourseRepository(fixture.db);
             var course = new Course{Id = 1, Name="Test course"};
 
             sut.Add(course);
@@ -41,7 +41,7 @@ namespace l2l.Data.Tests
         [Fact]
         public void CourseRepository_Read()
         {
-            var sut = new CourseRepository();
+            var sut = new CourseRepository(fixture.db);
             var course = new Course{Id = 1, Name="Test course"};
             sut.Add(course);
             
@@ -61,7 +61,7 @@ namespace l2l.Data.Tests
         [Fact]
         public void CourseRepository_Update()
         {
-            var sut = new CourseRepository();
+            var sut = new CourseRepository(fixture.db);
             var course = new Course{Id = 1, Name="Test course"};
             sut.Add(course);
             var toUpdate = sut.GetById(course.Id);
@@ -81,7 +81,7 @@ namespace l2l.Data.Tests
         [Fact]
         public void CourseRepository_Delete()
         {
-            var sut = new CourseRepository();
+            var sut = new CourseRepository(fixture.db);
             var course = new Course{Id = 1, Name="Test course"};
             sut.Add(course);
 
