@@ -5,23 +5,26 @@ namespace l2l.Data.Tests
 {
     public class DatabaseFixture : IDisposable
     {
-        public L2lDbContext db { get; private set;} 
+        private readonly L2lDbContextFactory factory;
 
 
         public DatabaseFixture()
         {
-            var factory = new L2lDbContextFactory();
-            db = factory.CreateDbContext(new string[] {});
+            factory = new L2lDbContextFactory();
+            var db = GetNewDbContext();
             db.Database.EnsureCreated();
+        }
+
+        public L2lDbContext GetNewDbContext()
+        {
+            return factory.CreateDbContext(new string[] {});
         }
         public void Dispose()
         {
-            if (db != null)
-            {
+
+                var db = GetNewDbContext();
                 db.Database.EnsureDeleted();
                 db.Dispose();
-                db =null;
-            }
         }
     }
 }
