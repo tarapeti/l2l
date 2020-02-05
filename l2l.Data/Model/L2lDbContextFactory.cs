@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace l2l.Data.Model
 {
-    public class L2lDbContextFactory : IDesignTimeDbContextFactory<L2lDbContext>
+    public class L2lDbContextFactory : IDesignTimeDbContextFactory<L2lDbContext>, IDisposable
     {
         private readonly SqliteConnection connection;
 
@@ -39,6 +39,11 @@ namespace l2l.Data.Model
             oBuilder.UseSqlite(connection);
 
             return new L2lDbContext(oBuilder.Options);
+        }
+
+        public void Dispose()
+        {
+            connection.Dispose();
         }
     }
 }
