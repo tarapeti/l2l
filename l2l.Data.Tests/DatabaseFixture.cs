@@ -5,7 +5,7 @@ namespace l2l.Data.Tests
 {
     public class DatabaseFixture : IDisposable
     {
-        private L2lDbContext db;
+        public L2lDbContext db { get; private set;} 
 
 
         public DatabaseFixture()
