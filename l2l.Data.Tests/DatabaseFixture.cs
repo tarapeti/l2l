@@ -21,8 +21,8 @@ namespace l2l.Data.Tests
         }
         public void Dispose()
         {
-
                 var db = GetNewDbContext();
+                factory.Dispose();
                 db.Database.EnsureDeleted();
                 db.Dispose();
         }
