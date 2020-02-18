@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using Microsoft.Data.SqlClient;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
@@ -9,7 +10,18 @@ namespace l2l.Data.Model
 {
     public class L2lDbContextFactory : IDesignTimeDbContextFactory<L2lDbContext>, IDisposable
     {
+        private readonly string cn;
         private readonly SqliteConnection connection;
+
+        public bool IsInMemoryDb()
+        {
+            var cb = new SqlConnectionStringBuilder(cn);
+            if(!cb.ContainsKey(GlobalStrings.DATA_SOURCE)){
+                throw new ArgumentException("missing property of connecting string: data source", "ConnectionString");
+            }
+
+            return "memory".Equals((string)cb[GlobalStrings.DATA_SOURCE], StringComparison.OrdinalIgnoreCase);
+        }
 
         public L2lDbContextFactory()
         {
@@ -25,7 +37,7 @@ namespace l2l.Data.Model
 
             var config = cBuilder.Build();
 
-            var cn = config.GetConnectionString(GlobalStrings.CONNECTION_NAME); //from appsettings
+            cn = config.GetConnectionString(GlobalStrings.CONNECTION_NAME); //from appsettings
 
             connection = new SqliteConnection(cn);
 
